@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>Cart – Green Plate</title>
+</head>
+<style>
+   html,
+    body {
+      margin: 0;
+      padding: 0;
+
+      height: 100%;
+    }
+    body {
+      background: #081c15;
+      min-height: 100vh;
+      font-family: 'Outfit', sans-serif;
+      overflow: hidden;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse at 20% 20%, #1b4332 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 80%, #081c15 0%, transparent 55%),
+        radial-gradient(ellipse at 60% 10%, #2d6a4f44 0%, transparent 45%);
+      z-index: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    /*navigator*/
+    .navigator{
+      position: relative; 
+      background: black;
+      height: 60px;
+      display: flex; 
+      align-items: center;
+      padding: 0 16px;
+      border-bottom: 1px solid #fdf8f0;
+      box-shadow: inset -2px -2px 15px #95d45a;
+      
+    }
+    .resname{
+      color: #95d45a;
+      font-weight: 700;
+      font-size: 16px;
+    }
+    .arrow{
+      background-color: transparent;
+      border: none;
+      color: #95d45a;
+      font-size: 22px; 
+      cursor: pointer;
+      margin-right: 12px;
+      transition: transform 0.2s;
+    }
+    .arrow:active{
+      transform: scale(0.85);
+    }
+
+
+    /*end navigator*/
+     /*title*/
+     .title-wrap{
+      position: relative;
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    
+     }
+     .title1{
+      color: #fdf8f0;
+       font-size: 22px; 
+       font-weight: 700;
+     }
+     .col{
+      color: #95d45a;
+      margin-left: 5px;
+     }
+     
+ .item-count { 
+  position :absolute;color: #9aa194; 
+  font-size: 12px;
+   top: 30px;
+border-bottom: #9aa194 solid 1px;
+
+}
+
+.container{
+  position: relative;
+  height: 70%;
+  overflow: scroll;
+  top: 30px;
+}
+.cartEmpty{
+  color: #fdf8f0;
+  position: absolute;
+  font-size: 25px;
+  top: 235px;
+  left: 63px;
+}
+.cartEmpty2{
+  color: #9aa194;
+  position: absolute;
+  top: 275px;
+  left: 78px;
+  font-size: 15px;
+}
+/*boxes*/
+.cart-card{
+  position: relative;
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  height: 100px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  margin-bottom: 10px;
+  color: #fdf8f0;
+  font-family: 'Outfit', sans-serif;
+
+}
+ img {
+      width: 68px; height: 68px;
+      border-radius: 10px;
+      object-fit: cover;
+     
+  }
+  .removeBtn{
+    position: absolute;left: 320px;top: 33px;
+    background: none; border: none;
+      color: #ff6b6b; font-size: 17px;
+      cursor: pointer; padding: 4px;
+      flex-shrink: 0;
+      transition: transform 0.15s ease-in-out;
+    }
+    .removeBtn:active { transform: scale(0.8); }
+  .name,.price,.qty,.total{ position: absolute;}
+  .name{top: 15px;left: 85px;}.price{top: 35px;left: 85px;font-size: 12px;color: #9aa194;}
+  .qty{top: 49px;left: 87px;font-size: 12px;color: #9aa194;}
+  .total{left:70%;top: 35px;font-size: 20px;color: #95d45a;font-weight:bolder ;}
+  /*money area*/
+.money-box{
+  display: block;
+  gap: 10px;
+  padding: 10px;
+  height: 120px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  margin-bottom: 10px;
+  color: #fdf8f0;
+  font-family: 'Outfit', sans-serif;
+}
+.summary-row1{
+  border-bottom: 1px solid #9aa194;
+  max-width: auto;
+ 
+ 
+}
+.summary-row,.summary-row1,.summary-row-total{position: relative; margin-bottom: 10px;  gap: 10px;}
+#subtotal{position: absolute; left: 80%;color: #9aa194;font-size: 18px;}
+#tax{position: absolute; left: 80%;color: #9aa194;font-size: 18px; }
+#grandTotal{position: absolute; left: 80%;color: #95d45a;font-weight:bold ;font-size: 20px;}
+/*place order button*/
+.placeOrderDiv{
+  height: 10%;
+ background: radial-gradient(ellipse at 100% 100%, #1b4332 100%, transparent 55%),
+        radial-gradient(ellipse at 80% 80%, #081c15 0%, transparent 55%),
+        radial-gradient(ellipse at 60% 10%, #2d6a4f44 0%, transparent 45%);
+  position: relative;
+  z-index:1;
+  border-top: 1px solid #95d45a;
+   
+}
+#placeOrder{
+  height: 50%;
+  border-radius: 20px;
+  width: 100%;
+  color: #081c15;
+  font-weight: bolder;
+  border: none;
+  background-color: #95d45a;
+ transition: transform 0.3s ease-in-out;
+
+}
+#placeOrder:active{
+  transform: scale(0.97);
+}
+/*customise msg css from index*/
+.alert-box{
+  position: fixed;
+  background-color: #1a1a1a;
+  color: #fdf8f0;
+  height: 130px;
+  width: 350px;
+  padding: 20px;
+  border-radius: 20px;
+  border: #95d45a 2px solid;
+
+}
+.alert-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(4px);
+            z-index: 999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+ .alert-overlay.show  {
+    transform: scale(1);
+    opacity: 1;
+     pointer-events: auto;
+  }.alert-overlay.show .alert-box {
+            transform: scale(1);
+             pointer-events: auto;
+        }
+.alert-btn:active{transform: scale(0.95);}
+.alert-btn{background-color: #95d45a; border-radius: 20px;font-weight: bold;margin-left: 115px;width: 30%;border:none;transition: all 0.3s ease-in-out; }
+
+.alert-icon,.alert-title,.alert-msg,.alert-btn{font-family: 'DM Sans', sans-serif;font-size: larger;margin-bottom: 10px;}
+.alert-icon{margin-left: 150px;}
+.alert-msg{margin-left: 40px;}
+
+</style>
+<body>
+  <nav class="navigator">
+   <button class="arrow" onclick="goback()">←</button><p class="resname">Green Plate</p>
+  </nav>
+  <div class="title-wrap">
+    <p class="title1">Your<span class="col">Cart</span></p>
+    <p class="title2"></p>
+    <div class="item-count" id="itemCount"></div>
+  </div>
+  <!--content part-->
+  <div class="container">
+    
+    <div class="boxes"></div>
+    <!--money calculation-->
+    <div class="money-box">
+      <div class="summary-row"><span>Subtotal : </span><span id="subtotal"></span></div>
+      <div class="summary-row1"><span>Tax (5%) : </span><span id="tax"></span></div>
+      <div class="summary-row-total"><span>Grand Total : </span><span id="grandTotal"></span></div>
+    </div>
+  </div>
+  <div class="placeOrderDiv"><button id="placeOrder">Place Order  →</button></div>
+
+  
+<!--customise msg from index.html-->
+<div class="alert-overlay" id="alertOverlay">
+        <div class="alert-box">
+            <div class="alert-icon" id="alertIcon"></div>
+            <div class="alert-title" id="alertTitle"></div>
+            <div class="alert-msg" id="alertMsg"></div>
+            <button class="alert-btn" onclick="paymentInterface()">PAY NOW</button>
+        </div>
+      </div>
+  
+
+  <!--Script tag (js)-->
+  <script>
+    //cart count maintaining
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+// item count
+  function updateItemCount() {
+    const totalQty = cart.reduce((s, i) => s + i.qty, 0);
+    const ltemCount = document.getElementById("itemCount");
+    if (cart.length > 0) {
+      ltemCount.innerText = `${cart.length} item${cart.length > 1 ? "s" : ""} · ${totalQty} qty`;
+    } else {
+      ltemCount.innerText = "";
+    }
+  }
+
+// clear body
+function clearBody(){
+    updateItemCount();
+  const boxes = document.querySelector(".boxes");
+  boxes.innerHTML = "";
+
+  const container = document.querySelector(".container");
+  if(cart.length === 0){
+    container.innerHTML = `<p class="cartEmpty">Your cart is empty! 🛒</p><br>
+    <p class="cartEmpty2">Go add something delicious!</p>`;
+    return;
+  }
+
+  cart.forEach((item, index) => {
+    const card = document.createElement("div");
+    card.classList.add("cart-card"); 
+    card.innerHTML = `
+      <img src="${item.img}">
+      <p class="name">${item.name}</p>
+      <p class="price">₹${item.price} per item</p>
+      <p class="qty">Qty: ${item.qty}</p>
+      <p class="total">₹${item.total}</p>
+      <button class="removeBtn" onclick="removeItem(${index})">✕</button>
+    `;
+    boxes.appendChild(card);
+  });
+
+  // money
+  const subtotal = cart.reduce((s,i) => s + i.total, 0);
+  const tax      = Math.round(subtotal * 0.05);
+  const grand    = subtotal + tax;
+  document.getElementById("subtotal").innerText   = "₹" + subtotal;
+  document.getElementById("tax").innerText        = "₹" + tax;
+  document.getElementById("grandTotal").innerText = "₹" + grand;
+}
+
+// remove item
+function removeItem(index){
+  cart.splice(index, 1);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  clearBody();
+}
+
+
+
+// place order
+document.getElementById("placeOrder").onclick = function(){
+  if(cart.length === 0) return;
+  const subtotal = cart.reduce((s, i) => s + i.total, 0);
+  const tax = Math.round(subtotal * 0.05);
+  window._pendingPayment = 10;//subtotal + tax;
+  showAlert("🎉", "Order Placed!", `Total: ₹${subtotal + tax}. Tap PAY NOW to complete payment.`);
+}
+//js of index.html
+function showAlert(icon,alert,msg){
+       document.getElementById("alertIcon").textContent = icon;
+            document.getElementById("alertTitle").textContent = alert;
+            document.getElementById("alertMsg").textContent = msg;
+            document.getElementById("alertOverlay").classList.add("show");
+    }
+     function paymentInterface() {
+           //soon
+          
+        const grandTotal = window._pendingPayment || 0;
+        const upiUrl = `upi://pay?pa=ibrahimziyanziyan@okicici&pn=Green%20Plate&am=${grandTotal}&cu=INR&tn=Table%20Order`;
+        cart = [];
+        localStorage.setItem("cart", JSON.stringify(cart));
+        clearBody();
+        window.location.href = upiUrl;
+}
+        
+   
+// call on load
+clearBody();
+  </script>
+</body>
+</html>

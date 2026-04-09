@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta charset="UTF-8">
+    <meta name="viewport" 
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+  <title>wwwziyantoufeer.com</title>
+  <style>
+
+    /*body section */
+     html,
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100%;
+        }
+    body {
+      background: #1a1a1a;
+      min-height: 100vh;
+      font-family: 'DM Sans', sans-serif;
+      overflow:hidden;
+      position: relative;/* for h58*/
+      
+    }
+    body::before{
+      content: "";
+      z-index: 0;
+      background:
+        radial-gradient(ellipse at 20% 20%, #1b4332 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 80%, #081c15 0%, transparent 55%),
+        radial-gradient(ellipse at 60% 10%, #2d6a4f44 0%, transparent 45%);
+      position: fixed;
+    inset: 0;
+
+    }
+     /*navigator*/
+    .nav-black{
+      height: 50px;
+      width: 100%;
+      background-color: black;
+      position: relative;
+      padding: 10px 10px;
+      border-bottom: 0.1px solid #fdf8f0;
+       
+     
+   }
+   p{
+    color:  #95d45a;
+    font-weight: bolder;
+    position: absolute;
+    font-family:  'Playfair Display', serif;
+    
+    
+    
+   }
+
+     /* typing animation*/
+    .type{
+      
+      position: fixed;
+      top:90px;
+      left: 10%;
+      font-size: clamp(26px, 7vw, 52px);
+      font-size: 30px;
+      white-space: nowrap;/*single line text*/
+      animation: typing 2.5s steps(16) forwards, blink 0.6s infinite;
+      border-right: solid 1px  #95d45a;    
+      overflow: hidden;
+      color:  #fdf8f0;
+      
+          
+    }
+    .type2{
+      color: #95d45a;
+
+    }
+  
+@keyframes typing {
+  from{
+    width:0px;
+
+  }
+  to{
+    width: 16ch;/*14 character*/
+ 
+  }
+  
+}
+@keyframes blink {
+  50%{border-color:transparent  ;}
+  
+ 
+  
+}
+h5{
+  color: #9aa194;
+  text-align: center;
+  position: relative;
+  top:60px;
+  animation: delay 5.5s  ease-in;
+}
+@keyframes delay {
+  from{opacity: 0;}
+  to{opacity: 1;}
+  
+}
+   /*boxes */
+
+    .box {
+      height: 250px;
+      width: 120px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 20px;
+      padding: 10px 10px;
+      position: absolute;
+      top: 300px;
+      left: 30px;
+      border: 3px solid #081c15;
+      animation: delay2 3s ease-in-out forwards;
+       transition: transform 2s ease-in-out,border 2s ease;
+
+      }
+
+    .img1 {
+      height: 120px;
+      width: 100%;
+      border-radius: 10px;
+
+    }
+    .boxcontainer{
+      height: 20px;
+      width: 60px;
+      background-color:  rgba(149,212,90,0.15);
+      position:absolute;
+      top: 135px;
+      left: 40px;
+      border-radius: 30px;
+    }
+  .boxcontainertxt{
+    position: absolute;
+    color: #95d45a;
+    font-weight: bolder;
+    top: -10px;
+    left: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+  }
+    .p1 {
+      color: #fdf8f0;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: bolder;
+      text-align: center;
+      font-size: 18px;
+      margin-top: 30px;
+    }
+    .subp1{
+      color: #9aa194;
+      font-family:'DM Sans', sans-serif ;
+      font-size: 11px;
+      position:absolute;
+      top:80%;
+
+      
+    }
+    .exploretxt{
+      color: #9aa194;
+      font-family:'DM Sans', sans-serif ;
+      font-size: 11px;
+      position:absolute;
+      top:85%;
+      left: 25%;
+    }
+      .box:active {
+      transform: scale(0.98);
+      border: 2px solid #95d45a;
+
+    }
+/*animation box*/
+@keyframes delay2 {
+  0%{opacity:0;
+  
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(-10px);
+  }
+  
+}
+
+.box1 {
+      height: 250px;
+      width: 120px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 20px;
+      padding: 10px 10px;
+      position: absolute;
+      top: 300px;
+      left: 190px;
+      border: 2px solid #081c15;
+      animation: delay2 3s ease-in-out forwards;
+      transition: transform 2s ease-in-out ,border 0.2s ease;
+      }
+
+    .img2 {
+      height: 120px;
+      width: 100%;
+      border-radius: 10px;
+
+    }
+    .boxcontainer2{
+      height: 20px;
+      width: 90px;
+      background-color:  rgba(149,212,90,0.15);
+      position:absolute;
+      top: 135px;
+      left: 25px;
+      border-radius: 30px;
+    }
+  .boxcontainertxt2{
+    position: absolute;
+    color: #ff6b5b;;
+    font-weight: bolder;
+    top: -10px;
+    left: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+    .p2 {
+      color: #fdf8f0;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: bolder;
+      text-align: center;
+      font-size: 18px;
+      margin-top: 30px;
+    }
+    .subp2{
+      color: #9aa194;
+      font-family:'DM Sans', sans-serif ;
+      font-size: 11px;
+      position:absolute;
+      top:80%;
+
+      
+    }
+    .exploretxt2{
+      color: #9aa194;
+      font-family:'DM Sans', sans-serif ;
+      font-size: 11px;
+      position:absolute;
+      top:85%;
+      left: 25%;
+    }
+    .box{
+      transition: all 0.5s ease-in-out;
+    }
+      .box:active {
+      transform: scale(0.95);
+      border: 2px solid #95d45a;
+
+    }
+    
+/*animation box*/
+@keyframes delay2 {
+  0%{opacity:0;
+  
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(-10px);
+  }
+  
+}
+
+
+    
+   
+  </style>
+
+<body>
+  <nav class="nav-black"><p >Green Plate</p></nav>
+ <h2 class="type">Your Choice <span class="type2">Matters</span></h2>
+ <h5>Fresh ingredients, Red flavour. Your call</h5>
+
+  </div>
+  <div class="box" onclick="goNext()">
+    <img class="img1" src="images/veg.jpg" alt=""><div class="boxcontainer"><p class="boxcontainertxt"> 🌿VEG</p></div>
+    <p class="p1">Vegetarian-Meals</p>
+    <p class="subp1">Plant-based, rich & tasty</p>
+    <p class="exploretxt">Explore Menu</p>
+  </div>
+  <div class="box1" onclick="goNext2()">
+     <img class="img1" src="images/nonveg.jpg" alt=""><div class="boxcontainer2"><p class="boxcontainertxt2">🍗Non-Veg</p></div>
+    <p class="p2">Non-Veg Meals</p>
+    <p class="subp2">Bold flavour, spicy & tasty</p>
+    <p class="exploretxt2">Explore Menu</p>
+  </div>
+
+
+  <script>
+    function goNext() {
+     setTimeout(() => {
+      window.location.href = "veg.html";
+    }, 300); // delay for smooth feel
+  }
+
+    
+    function goNext2() {
+     setTimeout(() => {
+      window.location.href = "non_veg.html";
+    }, 300); // delay for smooth feel
+  
+    }
+    
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" 
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+    <title>Welcome</title>
+      <style>
+         :root {
+        --green: #2d6a4f;
+        --lime: #95d45a;
+        --cream: #fdf8f0;
+        --dark: #1a1a1a;
+      }
+       html,
+        body {
+            margin: 0;
+            padding: 0; 
+            overflow: hidden;
+            height: 100%;
+        }
+
+       body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background: radial-gradient(ellipse at 20% 20%, #1b4332cc 0%, transparent 55%),
+                    radial-gradient(ellipse at 80% 80%, #081c15cc 0%, transparent 55%),
+                    rgba(0,0,0,0.55);
+                    z-index: 0;
+       }             
+    body {
+     
+      height: 100vh;
+       background-image: url("https://images.unsplash.com/photo-1498654896293-37aacf113fd9?auto=format&fit=crop&w=1920&q=80");
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 30px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      z-index: 1;
+      
+     
+    }
+
+    .container2 {
+      display: flex;
+      align-items: center;
+      z-index: 1;
+      margin-top: 10px;
+    }
+
+    h1 {
+     
+      color:  #fdf8f0;;
+      font-family: 'ZCOOL XiaoWei', serif;
+    }
+    .portion{
+     color:  #95d45a;
+    }
+
+    h3{
+      font-size: 15px;
+      color:rgba(255,255,255,0.55); ;
+      font-family: 'ZCOOL XiaoWei', serif;
+    }
+
+    .input1 {
+      padding: 10px;
+      width: 180px;
+      border-radius: 50px;
+      margin: 0px;
+    }
+
+    .input1::placeholder {
+      font-size: 12px;
+      color: rgba(144, 125, 125, 0.55);
+      font-weight: bold;
+      font-family: 'ZCOOL XiaoWei', serif;
+    }
+
+    .button1 {
+      width: 100px;
+      height: 37px;
+      border-radius: 30px;
+     border: none;
+      background-color:  #95d45a;;
+      color: #1a1a1a;
+      font-weight: bolder;
+
+    }
+    .button1:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 18px rgba(149,212,90,0.5);
+      }
+
+      .button1:active {
+        transform: scale(0.97);
+      }
+ 
+    .logo {
+      font-size: 30px;
+    }
+
+    .container {
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    /*delay to next page*/
+    
+@keyframes fadeOut {
+  to { opacity: 0; transform: translateY(-20px); }
+}
+
+/* this USES it — only runs when the class is on the element */
+.fade-out {
+  animation: fadeOut 0.9s ease-in-out forwards;
+}
+
+.alert-box{
+  position: fixed;
+  background-color: #1a1a1a;
+  color: #fdf8f0;
+  height: 120px;
+  width: 350px;
+  padding: 20px;
+  border-radius: 20px;
+  border: #95d45a 2px solid;
+
+}
+.alert-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(4px);
+            z-index: 999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+ .alert-overlay.show  {
+    transform: scale(1);
+    opacity: 1;
+     pointer-events: auto;
+  }.alert-overlay.show .alert-box {
+            transform: scale(1);
+             pointer-events: auto;
+        }
+.alert-btn:active{transform: scale(0.95);}
+.alert-btn{background-color: #95d45a; border-radius: 20px;font-weight: bold;margin-left: 120px;width: 30%;transition: all 0.3s ease-in-out; }
+
+.alert-icon,.alert-title,.alert-msg,.alert-btn{font-family: 'DM Sans', sans-serif;font-size: larger;margin-bottom: 10px;}
+.alert-icon{margin-left: 150px;}
+  </style>
+</head>
+<body>
+ 
+    <div class="container">
+    <h1>Welcome to<span class="portion">ABC</span></h1>
+    <h3>Please enter your table number <span class="logo">🍽️</span></h3>
+
+    <div class="container2">
+      <input type="text" class="input1" id="input1" placeholder="ENTER YOUR TABLE NO" required>
+      <button class="button1" onclick="rules()">Proceed</button>
+    </div>
+  </div>
+
+<!-- Custom Alert -->
+     <div class="alert-overlay" id="alertOverlay">
+        <div class="alert-box">
+            <div class="alert-icon" id="alertIcon">⚠️</div>
+            <div class="alert-title" id="alertTitle">Oops!</div>
+            <div class="alert-msg" id="alertMsg">Something went wrong.</div>
+            <button class="alert-btn" onclick="closeAlert()">OK</button>
+        </div>
+      </div>
+  
+
+  <script>
+    function showAlert(icon,alert,msg){
+       document.getElementById("alertIcon").textContent = icon;
+            document.getElementById("alertTitle").textContent = alert;
+            document.getElementById("alertMsg").textContent = msg;
+            document.getElementById("alertOverlay").classList.add("show");
+    }
+     function closeAlert() {
+            document.getElementById("alertOverlay").classList.remove("show");
+        }
+    function rules() {
+      let inp = document.getElementById("input1").value;
+      let num = Number(inp);
+      if (inp == "" || isNaN(num) || inp == 0 || num < 0) {
+        showAlert("😅", "Invalid Input!", "Please enter a valid table number.");
+                return;
+      }
+      if (num > 0) {
+        if (num > 12) {
+          showAlert("🚫", "Too High!", "There are only 12 tables available.");
+                return;
+        }
+      }
+      /*delay to next page*/
+      if (num <= 12 && num!=null) {
+        document.querySelector('.container').classList.add('fade-out');
+  setTimeout(() => {
+    window.location.href = "choose.html";
+  }, 400);
+}
+      }
+    
+
+  </script>
+</body>
+</html>

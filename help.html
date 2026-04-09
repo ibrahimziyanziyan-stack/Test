@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>Help – Green Plate</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+    body {
+      background: #081c15;
+      min-height: 100vh;
+      font-family: 'Outfit', sans-serif;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 20%, #1b4332 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 80%, #081c15 0%, transparent 55%),
+        radial-gradient(ellipse at 60% 10%, #2d6a4f44 0%, transparent 45%);
+      z-index: 0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* NAVIGATOR */
+    .navigator {
+      position: relative;
+      background: black;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      border-bottom: 1px solid #fdf8f0;
+      box-shadow: inset -2px -2px 15px #95d45a;
+      z-index: 10;
+    }
+    .resname {
+      color: #95d45a;
+      font-weight: 700;
+      font-size: 16px;
+    }
+    .tab-bar {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-left: 40px;
+      position: relative;
+      padding: 3px;
+    }
+    .tab-slider {
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      height: calc(100% - 6px);
+      background: #95d45a;
+      border-radius: 20px;
+      transition: left 0.35s cubic-bezier(0.4,0,0.2,1), width 0.35s cubic-bezier(0.4,0,0.2,1);
+      z-index: 0;
+    }
+    .tab-link {
+      color: #fdf8f0;
+      text-decoration: none;
+      font-size: 13px;
+      padding: 5px 13px;
+      border-radius: 20px;
+      position: relative;
+      z-index: 1;
+      transition: color 0.3s ease;
+      font-family: 'Outfit', sans-serif;
+    }
+    .tab-link.active {
+      color: #081c15;
+      font-weight: 700;
+    }
+
+    /* PAGE CONTENT */
+    .page {
+      position: relative;
+      z-index: 1;
+      padding: 24px 16px 40px;
+    }
+
+    /* HERO */
+    .hero {
+      text-align: center;
+      padding: 24px 0 20px;
+      animation: fadeUp 0.8s ease forwards;
+    }
+    .hero-icon {
+      font-size: 40px;
+      display: block;
+      margin-bottom: 10px;
+    }
+    .hero h1 {
+      color: #fdf8f0;
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .hero h1 span { color: #95d45a; }
+    .hero p {
+      color: #9aa194;
+      font-size: 13px;
+    }
+
+    /* STEP CARDS */
+    .section-title {
+      color: #9aa194;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin: 24px 0 12px;
+    }
+
+    .step-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(149,212,90,0.15);
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      animation: fadeUp 0.8s ease forwards;
+      opacity: 0;
+    }
+    .step-card:nth-child(1) { animation-delay: 0.1s; }
+    .step-card:nth-child(2) { animation-delay: 0.2s; }
+    .step-card:nth-child(3) { animation-delay: 0.3s; }
+    .step-card:nth-child(4) { animation-delay: 0.4s; }
+    .step-card:nth-child(5) { animation-delay: 0.5s; }
+
+    .step-num {
+      background: rgba(149,212,90,0.15);
+      color: #95d45a;
+      font-weight: 700;
+      font-size: 14px;
+      min-width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-body {}
+    .step-title {
+      color: #fdf8f0;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .step-desc {
+      color: #9aa194;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+    .step-desc span { color: #95d45a; }
+
+    /* FAQ */
+    .faq-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 14px;
+      margin-bottom: 8px;
+      overflow: hidden;
+      animation: fadeUp 0.8s ease forwards;
+      opacity: 0;
+    }
+    .faq-card:nth-child(1) { animation-delay: 0.15s; }
+    .faq-card:nth-child(2) { animation-delay: 0.25s; }
+    .faq-card:nth-child(3) { animation-delay: 0.35s; }
+    .faq-card:nth-child(4) { animation-delay: 0.45s; }
+
+    .faq-q {
+      padding: 14px 16px;
+      color: #fdf8f0;
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+    .faq-q:active { background: rgba(255,255,255,0.05); }
+    .faq-arrow {
+      color: #95d45a;
+      font-size: 16px;
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+    }
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.3s ease;
+      color: #9aa194;
+      font-size: 12px;
+      line-height: 1.7;
+      padding: 0 16px;
+    }
+    .faq-card.open .faq-a {
+      max-height: 200px;
+      padding: 0 16px 14px;
+    }
+    .faq-card.open .faq-arrow {
+      transform: rotate(180deg);
+    }
+
+    /* CONTACT CARD */
+    .contact-card {
+      background: rgba(149,212,90,0.08);
+      border: 1px solid rgba(149,212,90,0.3);
+      border-radius: 16px;
+      padding: 16px;
+      text-align: center;
+      margin-top: 8px;
+      animation: fadeUp 0.9s ease forwards;
+      opacity: 0;
+      animation-delay: 0.4s;
+    }
+    .contact-card p {
+      color: #9aa194;
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+    .contact-card .staff-btn {
+      background: #95d45a;
+      color: #081c15;
+      border: none;
+      border-radius: 20px;
+      padding: 10px 28px;
+      font-weight: 700;
+      font-size: 13px;
+      font-family: 'Outfit', sans-serif;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    .staff-btn:active { transform: scale(0.96); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navigator">
+    <div class="resname">Green Plate</div>
+    <div class="tab-bar" id="tabBar">
+      <div class="tab-slider" id="tabSlider"></div>
+      <a href="veg.html"     class="tab-link"        id="tab-veg"    onclick="switchTab(event,'veg')">Veg</a>
+      <a href="non_veg.html" class="tab-link"        id="tab-nonveg" onclick="switchTab(event,'nonveg')">Non-Veg</a>
+      <a href="help.html"    class="tab-link active" id="tab-about"  onclick="switchTab(event,'about')">Help</a>
+    </div>
+  </nav>
+
+  <div class="page">
+
+    <!-- HERO -->
+    <div class="hero">
+      <span class="hero-icon">🍽️</span>
+      <h1>How to <span>Order</span></h1>
+      <p>Follow these simple steps to place your order</p>
+    </div>
+
+    <!-- HOW TO ORDER -->
+    <div class="section-title">How it works</div>
+    <div>
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <div class="step-title">Enter your table number</div>
+          <div class="step-desc">On the welcome screen, type your <span>table number</span> and tap Proceed. You'll find your table number on the table card.</div>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <div class="step-title">Choose Veg or Non-Veg</div>
+          <div class="step-desc">Select your preferred category — <span>Veg</span> or <span>Non-Veg</span>. You can switch between them anytime using the tabs at the top.</div>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <div class="step-title">Add items to cart</div>
+          <div class="step-desc">Tap any dish to open it. Set the <span>quantity</span> using + and − buttons, then tap <span>Confirm Order</span> to add it to your cart.</div>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <div class="step-title">Add drinks if you like</div>
+          <div class="step-desc">Tap the <span>🥤 Drinks</span> button at the bottom to browse and add drinks to your cart alongside your food.</div>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <div class="step-title">Place order & pay</div>
+          <div class="step-desc">Go to <span>🛒 Cart</span>, review your items, tap <span>Place Order</span> and then <span>PAY NOW</span> to complete payment via UPI.</div>
+        </div>
+      </div>
+    </div>
+
+   
+  <script>
+    function moveSlider(targetEl) {
+      const bar = document.getElementById('tabBar');
+      const slider = document.getElementById('tabSlider');
+      const barRect = bar.getBoundingClientRect();
+      const tabRect = targetEl.getBoundingClientRect();
+      slider.style.left   = (tabRect.left - barRect.left) + 'px';
+      slider.style.width  = tabRect.width + 'px';
+      slider.style.height = tabRect.height + 'px';
+      slider.style.top    = (tabRect.top - barRect.top) + 'px';
+    }
+
+    function switchTab(event, tabName) {
+      event.preventDefault();
+      document.querySelectorAll('.tab-link').forEach(t => t.classList.remove('active'));
+      const clicked = event.currentTarget;
+      clicked.classList.add('active');
+      moveSlider(clicked);
+      if (tabName !== 'about') {
+        setTimeout(() => { window.location.href = clicked.href; }, 360);
+      }
+    }
+
+    window.addEventListener('load', () => {
+      requestAnimationFrame(() => {
+        const activeTab = document.querySelector('.tab-link.active');
+        if (activeTab) moveSlider(activeTab);
+      });
+    });
+
+    
+
+   
+  </script>
+
+</body>
+</html>

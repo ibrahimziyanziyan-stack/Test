@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>Veg Section</title>
+  <style>
+    /*mobile friendly*/
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+
+      height: 100%;
+    }
+
+    body {
+      background: #081c15;
+      min-height: 100vh;
+      font-family: 'Outfit', sans-serif;
+      overflow: hidden;
+
+
+
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse at 20% 20%, #1b4332 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 80%, #081c15 0%, transparent 55%),
+        radial-gradient(ellipse at 60% 10%, #2d6a4f44 0%, transparent 45%);
+      z-index: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+
+    /*navigator*/
+    .navigator {
+      background-color: black;
+      height: 60px;
+      width: 100%;
+      position: relative;
+      padding: 10px 10px;
+      white-space: nowrap;
+     
+      border-bottom: 1px solid #fdf8f0;
+      box-shadow:
+        0 0 0px #fdf8f0,
+        0 0 0px #fdf8f0,
+        0 0 0px #fdf8f0,
+        inset -2px -2px 15px #95d45a;
+      display: flex;
+      align-items: center;
+    }
+
+    .resname {
+      color: #95d45a;
+      font-weight: bolder;
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      padding-left: 8px;
+      flex-shrink: 0;
+    }
+
+    /* ── TAB BAR ── */
+    .tab-bar {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-left: 40px;
+      position: relative;
+      padding: 3px;
+    }
+
+    .tab-slider {
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      height: calc(100% - 6px);
+      background: #95d45a;
+      border-radius: 20px;
+      transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                  width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 0;
+    }
+
+    .tab-link {
+      color: #fdf8f0;
+      text-decoration: none;
+      font-size: 13px;
+      padding: 5px 13px;
+      border-radius: 20px;
+      position: relative;
+      z-index: 1;
+      transition: color 0.3s ease;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .tab-link.active {
+      color: #081c15;
+      font-weight: 700;
+    }
+
+    /*end navigator*/
+    /*bottom nav*/
+
+    .bottom_nav {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse at 20% 20%, #1b4332 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 80%, #081c15 0%, transparent 55%),
+        radial-gradient(ellipse at 60% 10%, #2d6a4f44 0%, transparent 45%);
+      z-index: 0;
+      height: 10%;
+      width: 100%;
+
+      bottom: 0;
+      display: flex;
+      justify-content: center;
+      /* centers horizontally */
+      align-items: center;
+      gap: 10px;
+      position: relative;
+      border-radius: 20px;
+      animation: fadeIn2 4s ease-in forwards;
+
+    }
+
+    .b_home,
+    .drinks,
+    .cart {
+
+
+      background: radial-gradient(ellipse at 20% 20%, #1b4332 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 80%, #081c15 0%, transparent 55%),
+        radial-gradient(ellipse at 60% 10%, #2d6a4f44 0%, transparent 45%);
+
+      height: 100%;
+      width: 35%;
+      border-radius: 20px;
+      font-size: 30px;
+      text-decoration: none;
+      transition: transform 0.6s ease, border 0.2s ease;
+      position: relative;
+    }
+
+    .bnav-icon {
+      margin-left: 32px;
+
+    }
+
+    .bnav-label {
+      color: #95d45a;
+      font-size: 20px;
+      white-space: nowrap;
+      margin-left: 20px;
+    }
+
+    .bnav-item {
+      text-decoration: none;
+    }
+
+    /*bottom nav cart*/
+    .cart-count {
+
+      background-color: red;
+      height: 20px;
+      width: 20px;
+      border-radius: 50%;
+      display: inline-flex;
+      /*for perfect circle*/
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: white;
+      font-weight: bold;
+      position: absolute;
+      top: 0;
+      left: 70%;
+      opacity: 0;
+    }
+
+    /*animation botton nav*/
+    .bottom_nav div:active {
+
+      border: 1px solid #95d45a;
+      transform: translateY(-10px) scale(1.05);
+      transition: transform 0.15s ease, border 0.1s ease;
+     
+    }
+
+    /* bottom nav ends*/
+    /* Title*/
+    .title-wrap {
+      text-align: center;
+      color: #fdf8f0;
+      font-family: 'DM Sans', sans-serif;
+      position: relative;
+      /*proper visibility | z- index part of it*/
+      z-index: 1;
+      animation: fadeIn 3s ease-in forwards;
+
+
+    }
+
+    .title1 {
+      font-size: 25px;
+      font-weight: bolder;
+    }
+
+    span {
+      color: #95d45a;
+    }
+
+    .title2 {
+      color: #9aa194;
+      font-size: 12px;
+      position: absolute;
+      top: 30px;
+      left: 100px;
+
+
+    }
+
+    /*title wrap fadein animation*/
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(10px);
+        opacity: 1;
+      }
+    }
+
+    /*boxes */
+    .container {
+
+      height: 65%;
+      width: 100%;
+
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+      padding: 20px;
+      position: relative;
+      flex-wrap: wrap;
+
+
+      overflow-y: scroll;
+      overflow-x: hidden;
+      animation: fadeIn2 4s ease-in forwards;
+
+    }
+
+    /*container  fadein */
+    @keyframes fadeIn2 {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(5px);
+      }
+
+    }
+
+    /* hover effect  any div that is a child of .container*/
+    .container div:active {
+      transform: scale(0.95);
+      border: 1px solid #95d45a;
+    }
+
+    .box1,
+    .box2,
+    .box3,
+    .box4,
+    .box5,
+    .box6,
+    .box7,
+    .box8,
+    .box9,
+    .box10,
+    .box11,
+    .box12 {
+
+      height: 180px;
+      width: calc(50% - 5px);
+      border-radius: 10px 10px 10px 10px;
+
+      border: 1px solid #252c2936;
+      background: rgba(255, 255, 255, 0.05);
+      transition: transform 0.4s ease, border 0.4s ease;
+
+
+
+    }
+
+    img {
+      border-radius: 10px 10px 0px 0px;
+      height: 65%;
+      width: 100%;
+
+    }
+
+    .box_p {
+      margin-left: 5px;
+      font-family: 'Outfit', sans-serif;
+      font-size: medium;
+      font-size: 14px;
+      color: #fdf8f0;
+
+    }
+
+    .box_price {
+      color: #95d45a;
+      margin-left: 5px;
+      margin-top: 5px;
+      font-weight: bold;
+
+    }
+
+    /*cart popup8*/
+    .popup {
+      position: fixed;
+      bottom: 0;
+      left: 0px;
+      height: 75%;
+      width: 100%;
+      background: #111;
+
+      border-radius: 40px 40px 0px 0px;
+      padding: 20px;
+      display: block;
+      opacity: 0;
+      pointer-events: none;
+      /*physical invisibility*/
+      transform: translateY(100%);
+      transition: all 0.3s ease-in, opacity 0.3s ease-in;
+
+
+    }
+
+
+
+
+    .handle {
+      width: 40px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 2px;
+      margin-left: 160px;
+      margin-top: 20px;
+    }
+
+    .popimg {
+      border-radius: 0px 0px 10px 10px;
+      margin-top: 10px;
+      height: 50%;
+    }
+
+    .sec1 {
+      color: #fdf8f0;
+      margin-top: 10px;
+      margin-bottom: 15px;
+    }
+
+    .sec2 {
+      margin-top: 10px;
+      margin-bottom: 15px;
+    }
+
+    .sec3 {
+      position: relative;
+      margin-top: 10px;
+      margin-bottom: 25px;
+    }
+
+    .qty-lab {
+      color: rgba(255, 255, 255, 0.55);
+      font-size: 13px;
+    }
+
+    .total-lab {
+      color: rgba(255, 255, 255, 0.55);
+
+    }
+
+    .controller {
+      display: inline;
+      font-size: 13px;
+      margin-left: 180px;
+
+
+    }
+
+    .controller,
+    .qty-btn,
+    .qtyNum {
+      font-size: 20px;
+      border-radius: 100%;
+      width: 25px;
+      color: #95d45a;
+      background-color: #081c15;
+
+
+    }
+
+    .qty-num {
+      color: #fdf8f0;
+    }
+
+    .qty-btn {
+      border: 1px solid rgba(149, 212, 90, 0.4);
+
+    }
+
+    .price {
+      color: #95d45a;
+      height: 20px;
+      width: 40px;
+      position: absolute;
+      top: 0;
+      left: 270px;
+      font-size: 23px;
+      font-weight: bolder;
+
+    }
+
+    .back_btn {
+      flex: 1;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      width: 120px;
+      height: 40px;
+      color: #fdf8f0;
+      padding: 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      transition: transform 0.3s ease-in;
+
+    }
+
+    .cnfrm_btn {
+      flex: 1;
+      background-color: #95d45a;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      width: 60%;
+      height: 40px;
+      color: #081c15;
+      padding: 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: bolder;
+      transition: transform 0.3s ease-in;
+     
+
+    }
+
+    .btn_sec input:active {
+      transform: scale(0.90);
+    }
+
+    /*click delay*/
+    @keyframes delay {
+ from {
+    transform: scale(0);
+    opacity: 1;}
+      to {
+        opacity: 1;
+        transform: scale(50);
+        
+      }
+    }
+
+    .delay {
+      animation: delay 0.6s ease-in-out forwards;
+       transition: opacity 0.6s ease-in, transform 0.3s ease-in;
+       background: radial-gradient(ellipse at 20% 20%, #1b4332 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 80%, #081c15 0%, transparent 55%),
+        radial-gradient(ellipse at 60% 10%, #2d6a4f44 0%, transparent 45%);
+
+       border-radius: 50%;
+        pointer-events: none;
+        z-index: 99999;
+}
+  </style>
+</head>
+
+<body>
+  <!--navigator-->
+  <nav class="navigator">
+    <div class="resname">Green Plate</div>
+
+    <div class="tab-bar" id="tabBar">
+      <div class="tab-slider" id="tabSlider"></div>
+      <a href="cluadework.html"          class="tab-link active" id="tab-veg"    onclick="switchTab(event,'veg')">Veg</a>
+      <a href="non_veg.html" class="tab-link"        id="tab-nonveg" onclick="switchTab(event,'nonveg')">Non-Veg</a>
+      <a href="help.html"  class="tab-link"        id="tab-about"  onclick="switchTab(event,'about')">Help</a>
+      
+    </div>
+  </nav>
+  <!--Title-->
+  <div class="title-wrap">
+    <div class="title1">
+      <p>Pure <span>Veg </span> Menu</p>
+    </div>
+    <div class="title2">
+      <p>Fresh, flavourful, Plant based</p>
+    </div>
+  </div>
+  <!--boxes-->
+  <div class="container">
+    <div class="box1"
+      onclick="cart_pop('Paneer Butter Masala','https://images.pexels.com/photos/1117862/pexels-photo-1117862.jpeg',199)">
+      <img src="https://images.pexels.com/photos/1117862/pexels-photo-1117862.jpeg">
+      <p class="box_p">Paneer Butter Masala</p>
+      <p class="box_price">₹ 199</p>
+    </div>
+
+    <div class="box2"
+      onclick="cart_pop('Vegetable Biryani','https://images.pexels.com/photos/5410401/pexels-photo-5410401.jpeg',299)">
+      <img src="https://images.pexels.com/photos/5410401/pexels-photo-5410401.jpeg">
+      <p class="box_p">Vegetable Biryani</p>
+      <p class="box_price">₹ 299</p>
+    </div>
+
+    <div class="box3"
+      onclick="cart_pop('Veg Fried Rice','https://images.pexels.com/photos/1624487/pexels-photo-1624487.jpeg',180)">
+      <img src="https://images.pexels.com/photos/1624487/pexels-photo-1624487.jpeg">
+      <p class="box_p">Veg Fried Rice</p>
+      <p class="box_price">₹ 180</p>
+    </div>
+
+    <div class="box4"
+      onclick="cart_pop('Masala Dosa','https://images.pexels.com/photos/5560763/pexels-photo-5560763.jpeg',70)">
+      <img src="https://images.pexels.com/photos/5560763/pexels-photo-5560763.jpeg">
+      <p class="box_p">Masala Dosa</p>
+      <p class="box_price">₹ 70</p>
+    </div>
+
+    <div class="box5"
+      onclick="cart_pop('Chole Bhature','https://images.pexels.com/photos/4331489/pexels-photo-4331489.jpeg',200)">
+      <img src="https://images.pexels.com/photos/4331489/pexels-photo-4331489.jpeg">
+      <p class="box_p">Chole Bhature</p>
+      <p class="box_price">₹ 200</p>
+    </div>
+
+    <div class="box6"
+      onclick="cart_pop('Veg Pulao','https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg',99)">
+      <img src="https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg">
+      <p class="box_p">Veg Pulao</p>
+      <p class="box_price">₹ 99</p>
+    </div>
+
+    <div class="box7"
+      onclick="cart_pop('Palak Paneer','https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg',499)">
+      <img src="https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg">
+      <p class="box_p">Palak Paneer</p>
+      <p class="box_price">₹ 499</p>
+    </div>
+
+    <div class="box8"
+      onclick="cart_pop('Veg Noodles','https://images.pexels.com/photos/2347311/pexels-photo-2347311.jpeg',79)">
+      <img src="https://images.pexels.com/photos/2347311/pexels-photo-2347311.jpeg">
+      <p class="box_p">Veg Noodles</p>
+      <p class="box_price">₹ 79</p>
+    </div>
+
+    <div class="box9"
+      onclick="cart_pop('Vegetable Kurma','https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg',170)">
+      <img src="https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg">
+      <p class="box_p">Vegetable Kurma</p>
+      <p class="box_price">₹ 170</p>
+    </div>
+
+    <div class="box10"
+      onclick="cart_pop('Aloo Gobi','https://images.pexels.com/photos/5560761/pexels-photo-5560761.jpeg',299)">
+      <img src="https://images.pexels.com/photos/5560761/pexels-photo-5560761.jpeg">
+      <p class="box_p">Aloo Gobi</p>
+      <p class="box_price">₹ 299</p>
+    </div>
+
+    <div class="box11"
+      onclick="cart_pop('Veg Thali','https://images.pexels.com/photos/958547/pexels-photo-958547.jpeg',280)">
+      <img src="https://images.pexels.com/photos/958547/pexels-photo-958547.jpeg">
+      <p class="box_p">Veg Thali</p>
+      <p class="box_price">₹ 280</p>
+    </div>
+
+    <div class="box12"
+      onclick="cart_pop('Veg Momos','https://images.pexels.com/photos/4110002/pexels-photo-4110002.jpeg',250)">
+      <img src="https://images.pexels.com/photos/4110002/pexels-photo-4110002.jpeg" id="imgbox">
+      <p class="box_p"> Veg Momos</p>
+      <p class="box_price">₹ 250</p>
+    </div>
+
+
+  </div>
+  <nav class="bottom_nav">
+    <div class="b_home">
+      <a href="index.html" class="bnav-item">
+        <span class="bnav-icon">🏠</span>
+        <span class="bnav-label">Home</span>
+      </a>
+    </div>
+    <div class="drinks" onclick="Drinks()">
+      <span class="bnav-icon">🥤</span>
+      <span class="bnav-label">Drinks</span>
+    </div>
+    <div class="cart" onclick="cart_pop2()">
+      <span class="bnav-icon">🛒</span>
+      <span class="bnav-label">Cart</span>
+      <span class="cart-count" id="cartCount">0</span>
+    </div>
+  </nav>
+
+
+  <div class="popup" id="popup">
+    <div class="handle"></div>
+    <img class="popimg" id="popimg">
+    <div class="sec1" id="sec1">-----</div>
+    <div class="sec2" id="sec2">
+      <label class="qty-lab" id="qty-lab">Quantity</label>
+      <div class="controller"> <button class="qty-btn" onclick="changeQty(-1)">−</button>
+
+        <span class="qty-num" id="qtyNum">0</span>
+
+        <button class="qty-btn" onclick="changeQty(1)">+</button>
+      </div>
+    </div>
+    <div class="sec3">
+      <label class="total-lab" id="total-lab">Total</label>
+      <div class="price" id="price">₹0</div>
+    </div>
+    <div class="btn_sec">
+      <input class="back_btn" type="button" value="Back" id="back_button" name="button">
+      <input class="cnfrm_btn" type="button" value="Conform Order →" id="Conform_button" name="button">
+    </div>
+  </div>
+  <script>
+//nav new area
+function moveSlider(targetEl) {
+      const bar    = document.getElementById('tabBar');
+      const slider = document.getElementById('tabSlider');
+      const barRect = bar.getBoundingClientRect();
+      const tabRect = targetEl.getBoundingClientRect();
+      slider.style.left   = (tabRect.left - barRect.left) + 'px';
+      slider.style.width  = tabRect.width + 'px';
+      slider.style.height = tabRect.height + 'px';
+      slider.style.top    = (tabRect.top  - barRect.top)  + 'px';
+    }
+
+
+function switchTab(event, tabName) {
+      event.preventDefault();
+      document.querySelectorAll('.tab-link').forEach(t => t.classList.remove('active'));
+      const clicked = event.currentTarget;
+      clicked.classList.add('active');
+      moveSlider(clicked);
+      if (tabName !== 'veg') {
+        setTimeout(() => { window.location.href = clicked.href; }, 360);
+      }
+    }
+
+    window.addEventListener('load', () => {
+  requestAnimationFrame(() => {
+    const activeTab = document.querySelector('.tab-link.active');
+    if (activeTab) moveSlider(activeTab);
+  });
+  //saving cart count while moving to next page
+   let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let totalQty = cart.reduce((sum, i) => sum + i.qty, 0);
+  if (totalQty > 0) {
+    document.getElementById("cartCount").innerText = totalQty;
+    document.getElementById("cartCount").style.opacity = 1;
+  }
+});
+
+
+
+
+
+
+//nav new area
+
+
+
+
+
+
+
+
+
+
+    //cart visibiliy
+    function cart_pop(foodname, img, price) {
+      currentPrice = price;
+      document.getElementById("popup").style.opacity = 1;
+      document.getElementById("popup").style.pointerEvents = "all";
+      //scroll up
+      document.getElementById("popup").style.transform = "translateY(0)";
+      // reset 
+      qty = 0; 
+      document.getElementById("qtyNum").innerText = 0;
+      document.getElementById("price").innerText = "₹0";
+      //scroll down
+      document.getElementById("back_button").onclick = function () {
+      document.getElementById("popup").style.opacity = 0;
+      document.getElementById("popup").style.pointerEvents = "none";
+      document.getElementById("popup").style.transform = "translateY(100%)";
+
+      }
+      //images
+      document.getElementById("popimg").src = img;
+      //foodname
+      document.getElementById("sec1").innerText = foodname;
+
+    }
+    //Quantity
+    let qty = 0;
+    let currentPrice = 0;
+
+    function changeQty(val) {
+      qty = Math.max(0, qty + val);
+      document.getElementById("qtyNum").innerText = qty;
+      document.getElementById("price").innerText = "₹" + (qty * currentPrice);
+
+    }
+    //cart count increment
+      document.getElementById("Conform_button").onclick = function () {
+      document.getElementById("popup").style.opacity = 0;
+      document.getElementById("popup").style.pointerEvents = "none";
+      document.getElementById("popup").style.transform = "translateY(100%)";
+      document.getElementById("cartCount").style.opacity = 1;
+      
+    
+
+      //local storage (cart.html)
+    
+      
+      if(qty === 0)return;
+     let cart = JSON.parse(localStorage.getItem("cart")) || [];
+     const foodname=document.getElementById("sec1").innerText;
+     const imgSrc = document.getElementById("popimg").src;
+     const Item_present = cart.find(item => item.name === foodname);
+     if(Item_present){
+        Item_present.qty+=qty;
+        Item_present.total = Item_present.qty * Item_present.price;
+     }else{
+        cart.push({
+            name:foodname,
+            img:imgSrc,
+            price:currentPrice,
+            qty: qty,
+            total: qty * currentPrice
+        });
+     }
+localStorage.setItem("cart",JSON.stringify(cart));
+// cart count reset solution
+let totalQty = cart.reduce((sum, i) => sum + i.qty, 0);
+document.getElementById("cartCount").innerText = totalQty;
+document.getElementById("cartCount").style.opacity = 1;
+    }
+   
+
+
+
+
+    //cart next page
+    function cart_pop2() {
+
+      //delay 
+      document.querySelector(".cart").classList.add("delay");
+      setTimeout(() => { window.location.href = "cart.html" }, 550);
+    }
+    //drinks
+    function Drinks(){
+      //delay 
+      document.querySelector(".drinks").classList.add("delay");
+      setTimeout(() => { window.location.href = "drinks.html" },550 )
+    }
+    
+</script>
+</body>
+
+</html>
