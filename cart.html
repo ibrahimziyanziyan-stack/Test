@@ -198,7 +198,7 @@ border-bottom: #9aa194 solid 1px;
   position: fixed;
   background-color: #1a1a1a;
   color: #fdf8f0;
-  height: 130px;
+  height: 190px;
   width: 350px;
   padding: 20px;
   border-radius: 20px;
@@ -227,11 +227,12 @@ border-bottom: #9aa194 solid 1px;
              pointer-events: auto;
         }
 .alert-btn:active{transform: scale(0.95);}
-.alert-btn{background-color: #95d45a; border-radius: 20px;font-weight: bold;margin-left: 115px;width: 30%;border:none;transition: all 0.3s ease-in-out; }
+.alert-btn{font-size:12px;background-color: #95d45a; border-radius: 20px;font-weight: bold;margin-left: 115px;width: 30%;border:none;transition: all 0.3s ease-in-out; padding: 10px;}
 
-.alert-icon,.alert-title,.alert-msg,.alert-btn{font-family: 'DM Sans', sans-serif;font-size: larger;margin-bottom: 10px;}
+.alert-icon,.alert-title,.alert-msg{font-family: 'DM Sans', sans-serif;font-size: larger;margin-bottom: 10px;}
 .alert-icon{margin-left: 150px;}
 .alert-msg{margin-left: 40px;}
+.alert-title{margin-left: 100px;}
 
 </style>
 <body>
@@ -334,7 +335,7 @@ document.getElementById("placeOrder").onclick = function(){
   if(cart.length === 0) return;
   const subtotal = cart.reduce((s, i) => s + i.total, 0);
   const tax = Math.round(subtotal * 0.05);
-  window._pendingPayment = 10;//subtotal + tax;
+  window._pendingPayment = 1;//subtotal + tax;
   showAlert("🎉", "Order Placed!", `Total: ₹${subtotal + tax}. Tap PAY NOW to complete payment.`);
 }
 //js of index.html

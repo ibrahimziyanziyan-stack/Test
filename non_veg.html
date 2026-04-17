@@ -5,27 +5,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
-  <title>Veg Section</title>
+  <title> NonVeg Section</title>
   <style>
-    /*mobile friendly*/
     html,
-    body {
-      margin: 0;
-      padding: 0;
-
+    body{
+      margin:0;
+      padding:0;
       height: 100%;
     }
 
-    body {
-      background: #081c15;
-      min-height: 100vh;
-      font-family: 'Outfit', sans-serif;
-      overflow: hidden;
-
-
-
+    body{
+      background:#081c15;
+      min-height:100vh;
+      font-family:'outfit',sans-serif;
+      overflow:hidden;
     }
-
     body::before {
       content: '';
       position: fixed;
@@ -42,16 +36,14 @@
       padding: 0;
     }
 
-
-    /*navigator*/
-    .navigator {
+    .navigator{
       background-color: black;
       height: 60px;
-      width: 100%;
-      position: relative;
-      padding: 10px 10px;
+      width:100%;
+      position:relative;
+      padding:10px 10px;
       white-space: nowrap;
-     
+
       border-bottom: 1px solid #fdf8f0;
       box-shadow:
         0 0 0px #fdf8f0,
@@ -71,16 +63,14 @@
       flex-shrink: 0;
     }
 
-    /* ── TAB BAR ── */
-    .tab-bar {
-      display: flex;
+    .tab-bar{
       align-items: center;
-      gap: 4px;
+      display:flex;
+      gap:4px;
       margin-left: 40px;
       position: relative;
       padding: 3px;
     }
-
     .tab-slider {
       position: absolute;
       top: 3px;
@@ -92,7 +82,7 @@
                   width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
       z-index: 0;
     }
-
+    
     .tab-link {
       color: #fdf8f0;
       text-decoration: none;
@@ -104,14 +94,11 @@
       transition: color 0.3s ease;
       font-family: 'Outfit', sans-serif;
     }
-
+    
     .tab-link.active {
       color: #081c15;
       font-weight: 700;
     }
-
-    /*end navigator*/
-    /*bottom nav*/
 
     .bottom_nav {
       position: fixed;
@@ -169,7 +156,7 @@
       text-decoration: none;
     }
 
-    /*bottom nav cart*/
+    /* bottom nav cart */
     .cart-count {
 
       background-color: red;
@@ -177,7 +164,7 @@
       width: 20px;
       border-radius: 50%;
       display: inline-flex;
-      /*for perfect circle*/
+      /* for perfect circle */
       align-items: center;
       justify-content: center;
       font-size: 11px;
@@ -189,7 +176,7 @@
       opacity: 0;
     }
 
-    /*animation botton nav*/
+    /* animation bottom nav */
     .bottom_nav div:active {
 
       border: 1px solid #95d45a;
@@ -205,7 +192,7 @@
       color: #fdf8f0;
       font-family: 'DM Sans', sans-serif;
       position: relative;
-      /*proper visibility | z- index part of it*/
+      /* proper visibility | z- index part of it */
       z-index: 1;
       animation: fadeIn 3s ease-in forwards;
 
@@ -231,7 +218,7 @@
 
     }
 
-    /*title wrap fadein animation*/
+    /* title wrap fadein animation */
     @keyframes fadeIn {
       from {
         opacity: 0;
@@ -331,7 +318,7 @@
 
     }
 
-    /*cart popup8*/
+    /* cart popup */
     .popup {
       position: fixed;
       bottom: 0;
@@ -345,7 +332,7 @@
       display: block;
       opacity: 0;
       pointer-events: none;
-      /*physical invisibility*/
+      /* physical invisibility */
       transform: translateY(100%);
       transition: all 0.3s ease-in, opacity 0.3s ease-in;
 
@@ -475,15 +462,15 @@
       transform: scale(0.90);
     }
 
-    /*click delay*/
+    /* click delay */
     @keyframes delay {
- from {
-    transform: scale(0);
-    opacity: 1;}
+      from {
+        transform: scale(0);
+        opacity: 1;
+      }
       to {
         opacity: 1;
         transform: scale(50);
-        
       }
     }
 
@@ -497,120 +484,117 @@
        border-radius: 50%;
         pointer-events: none;
         z-index: 99999;
-}
+    }
   </style>
 </head>
 
+
 <body>
-  <!--navigator-->
   <nav class="navigator">
-    <div class="resname">Green Plate</div>
+    <div class="resname">non veg</div>
 
     <div class="tab-bar" id="tabBar">
       <div class="tab-slider" id="tabSlider"></div>
-      <a href="cluadework.html"          class="tab-link active" id="tab-veg"    onclick="switchTab(event,'veg')">Veg</a>
-      <a href="non_veg.html" class="tab-link"        id="tab-nonveg" onclick="switchTab(event,'nonveg')">Non-Veg</a>
-      <a href="help.html"  class="tab-link"        id="tab-about"  onclick="switchTab(event,'help')">Help</a>
-      
+      <a href="veg.html" class="tab-link" id="tab-veg" onclick="switchTab(event,'veg')">Veg</a>
+      <a href="non_veg.html" class="tab-link active" id="tab-nonveg" onclick="switchTab(event,'nonveg')">Non-Veg</a>
+      <a href="help.html" class="tab-link" id="tab-about" onclick="switchTab(event,'about')">Help</a>
     </div>
   </nav>
-  <!--Title-->
+
   <div class="title-wrap">
     <div class="title1">
-      <p>Pure <span>Veg </span> Menu</p>
-    </div>
-    <div class="title2">
-      <p>Fresh, flavourful, Plant based</p>
+      <p>Non<span>Veg</span> Menu</p>
     </div>
   </div>
+
   <!--boxes-->
   <div class="container">
     <div class="box1"
-      onclick="cart_pop('Paneer Butter Masala','https://images.pexels.com/photos/1117862/pexels-photo-1117862.jpeg',199)">
-      <img src="https://images.pexels.com/photos/1117862/pexels-photo-1117862.jpeg">
-      <p class="box_p">Paneer Butter Masala</p>
+      onclick="cart_pop('chicken biryani','https://wallpaperaccess.com/full/1972917.jpg',199)">
+      <img src="https://wallpaperaccess.com/full/1972917.jpg">
+      <p class="box_p">chicken biryani</p>
       <p class="box_price">₹ 199</p>
     </div>
 
     <div class="box2"
-      onclick="cart_pop('Vegetable Biryani','https://images.pexels.com/photos/5410401/pexels-photo-5410401.jpeg',299)">
-      <img src="https://images.pexels.com/photos/5410401/pexels-photo-5410401.jpeg">
-      <p class="box_p">Vegetable Biryani</p>
+      onclick="cart_pop('tandoori chicken','https://tse3.mm.bing.net/th/id/OIP.OwqDcMuaZQgw9Feo0PnnhQAAAA?pid=Api&h=220&P=0',299)">
+      <img src="https://tse3.mm.bing.net/th/id/OIP.OwqDcMuaZQgw9Feo0PnnhQAAAA?pid=Api&h=220&P=0">
+      <p class="box_p">Tandoori chicken</p>
       <p class="box_price">₹ 299</p>
     </div>
 
     <div class="box3"
-      onclick="cart_pop('Veg Fried Rice','https://images.pexels.com/photos/1624487/pexels-photo-1624487.jpeg',180)">
-      <img src="https://images.pexels.com/photos/1624487/pexels-photo-1624487.jpeg">
-      <p class="box_p">Veg Fried Rice</p>
+      onclick="cart_pop('chicken peri peri','https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/FOOD_CATALOG/IMAGES/CMS/2026/1/18/b53cd8bb-0d98-4816-bde6-00ab9b8ea58f_fca951ab-01ec-4f99-ad81-432a09b26b4c.JPG',180)">
+      <img src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/FOOD_CATALOG/IMAGES/CMS/2026/1/18/b53cd8bb-0d98-4816-bde6-00ab9b8ea58f_fca951ab-01ec-4f99-ad81-432a09b26b4c.JPG">
+      <p class="box_p">chicken peri peri</p>
       <p class="box_price">₹ 180</p>
     </div>
 
     <div class="box4"
-      onclick="cart_pop('Masala Dosa','https://images.pexels.com/photos/5560763/pexels-photo-5560763.jpeg',70)">
-      <img src="https://images.pexels.com/photos/5560763/pexels-photo-5560763.jpeg">
-      <p class="box_p">Masala Dosa</p>
+      onclick="cart_pop('chicken schezwan','https://www.yummytummyaarthi.com/wp-content/uploads/2013/11/schezwan-chicken-1.jpg',70)">
+      <img src="https://www.yummytummyaarthi.com/wp-content/uploads/2013/11/schezwan-chicken-1.jpg">
+      <p class="box_p">chicken schezwan</p>
       <p class="box_price">₹ 70</p>
     </div>
 
     <div class="box5"
-      onclick="cart_pop('Chole Bhature','https://images.pexels.com/photos/4331489/pexels-photo-4331489.jpeg',200)">
-      <img src="https://images.pexels.com/photos/4331489/pexels-photo-4331489.jpeg">
-      <p class="box_p">Chole Bhature</p>
+      onclick="cart_pop('pepper chicken','https://flavorquotient.com/wp-content/uploads/2025/04/Pepper-Chicken-Dry-FQ-10-2.webp',200)">
+      <img src="https://flavorquotient.com/wp-content/uploads/2025/04/Pepper-Chicken-Dry-FQ-10-2.webp">
+      <p class="box_p">pepper chicken</p>
       <p class="box_price">₹ 200</p>
     </div>
 
     <div class="box6"
-      onclick="cart_pop('Veg Pulao','https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg',99)">
-      <img src="https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg">
-      <p class="box_p">Veg Pulao</p>
+      onclick="cart_pop('chicken lolipop','https://www.yummytummyaarthi.com/wp-content/uploads/2021/11/chicken-lollipop-1.jpeg',99)">
+      <img src="https://www.yummytummyaarthi.com/wp-content/uploads/2021/11/chicken-lollipop-1.jpeg">
+      <p class="box_p">chicken lolipop</p>
       <p class="box_price">₹ 99</p>
     </div>
 
     <div class="box7"
-      onclick="cart_pop('Palak Paneer','https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg',499)">
-      <img src="https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg">
-      <p class="box_p">Palak Paneer</p>
+      onclick="cart_pop('chicken 65','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfE36sXgx0UurC8aGJP0ACTDrdR7akqoEXTQ&s',499)">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfE36sXgx0UurC8aGJP0ACTDrdR7akqoEXTQ&s">
+      <p class="box_p">chicken 65</p>
       <p class="box_price">₹ 499</p>
     </div>
 
     <div class="box8"
-      onclick="cart_pop('Veg Noodles','https://images.pexels.com/photos/2347311/pexels-photo-2347311.jpeg',79)">
-      <img src="https://images.pexels.com/photos/2347311/pexels-photo-2347311.jpeg">
-      <p class="box_p">Veg Noodles</p>
+      onclick="cart_pop('egg biryani','https://www.chefkunalkapur.com/wp-content/uploads/2021/03/egg-biryani-1-1300x868.jpeg?v=1625193642',79)">
+      <img src="https://www.chefkunalkapur.com/wp-content/uploads/2021/03/egg-biryani-1-1300x868.jpeg?v=1625193642">
+      <p class="box_p">egg biryani</p>
       <p class="box_price">₹ 79</p>
     </div>
 
     <div class="box9"
-      onclick="cart_pop('Vegetable Kurma','https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg',170)">
-      <img src="https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg">
-      <p class="box_p">Vegetable Kurma</p>
+      onclick="cart_pop('chicken fried rice','https://recipes.timesofindia.com/thumb/75581339.cms?width=1200&height=900',170)">
+      <img src="https://recipes.timesofindia.com/thumb/75581339.cms?width=1200&height=900">
+      <p class="box_p">chicken fried rice</p>
       <p class="box_price">₹ 170</p>
     </div>
 
     <div class="box10"
-      onclick="cart_pop('Aloo Gobi','https://images.pexels.com/photos/5560761/pexels-photo-5560761.jpeg',299)">
-      <img src="https://images.pexels.com/photos/5560761/pexels-photo-5560761.jpeg">
-      <p class="box_p">Aloo Gobi</p>
+      onclick="cart_pop('chicken sukka','https://theyummydelights.com/wp-content/uploads/2021/11/mangalorean-chicken-sukka.jpg',299)">
+      <img src="https://theyummydelights.com/wp-content/uploads/2021/11/mangalorean-chicken-sukka.jpg">
+      <p class="box_p">chicken sukka</p>
       <p class="box_price">₹ 299</p>
     </div>
 
     <div class="box11"
-      onclick="cart_pop('Veg Thali','https://images.pexels.com/photos/958547/pexels-photo-958547.jpeg',280)">
-      <img src="https://images.pexels.com/photos/958547/pexels-photo-958547.jpeg">
-      <p class="box_p">Veg Thali</p>
+      onclick="cart_pop('egg chilli','https://easyindiancookbook.com/wp-content/uploads/2023/12/chilli-eggs-1.jpg',280)">
+      <img src="https://easyindiancookbook.com/wp-content/uploads/2023/12/chilli-eggs-1.jpg">
+      <p class="box_p">egg chili</p>
       <p class="box_price">₹ 280</p>
     </div>
 
     <div class="box12"
-      onclick="cart_pop('Veg Momos','https://images.pexels.com/photos/4110002/pexels-photo-4110002.jpeg',250)">
-      <img src="https://images.pexels.com/photos/4110002/pexels-photo-4110002.jpeg" id="imgbox">
-      <p class="box_p"> Veg Momos</p>
+      onclick="cart_pop('mutton fry','https://diningwithayesha.com/wp-content/uploads/2025/07/mutton-fry-recipe.jpg',250)">
+      <img src="https://diningwithayesha.com/wp-content/uploads/2025/07/mutton-fry-recipe.jpg" id="imgbox">
+      <p class="box_p"> mutton fry</p>
       <p class="box_price">₹ 250</p>
     </div>
 
-
   </div>
+
   <nav class="bottom_nav">
     <div class="b_home">
       <a href="index.html" class="bnav-item">
@@ -652,9 +636,10 @@
       <input class="cnfrm_btn" type="button" value="Conform Order →" id="Conform_button" name="button">
     </div>
   </div>
+
   <script>
-//nav new area
-function moveSlider(targetEl) {
+    // nav
+    function moveSlider(targetEl) {
       const bar    = document.getElementById('tabBar');
       const slider = document.getElementById('tabSlider');
       const barRect = bar.getBoundingClientRect();
@@ -665,73 +650,55 @@ function moveSlider(targetEl) {
       slider.style.top    = (tabRect.top  - barRect.top)  + 'px';
     }
 
-
-function switchTab(event, tabName) {
+    function switchTab(event, tabName) {
       event.preventDefault();
       document.querySelectorAll('.tab-link').forEach(t => t.classList.remove('active'));
       const clicked = event.currentTarget;
       clicked.classList.add('active');
       moveSlider(clicked);
-      if (tabName !== 'veg') {
+      if (tabName !== 'nonveg') {
         setTimeout(() => { window.location.href = clicked.href; }, 360);
       }
     }
 
     window.addEventListener('load', () => {
-  requestAnimationFrame(() => {
-    const activeTab = document.querySelector('.tab-link.active');
-    if (activeTab) moveSlider(activeTab);
-  });
-  //saving cart count while moving to next page
-   let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  let totalQty = cart.reduce((sum, i) => sum + i.qty, 0);
-  if (totalQty > 0) {
-    document.getElementById("cartCount").innerText = totalQty;
-    document.getElementById("cartCount").style.opacity = 1;
-  }
-});
+      requestAnimationFrame(() => {
+        const activeTab = document.querySelector('.tab-link.active');
+        if (activeTab) moveSlider(activeTab);
+      });
+      // saving cart count while moving to next page
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      let totalQty = cart.reduce((sum, i) => sum + i.qty, 0);
+      if (totalQty > 0) {
+        document.getElementById("cartCount").innerText = totalQty;
+        document.getElementById("cartCount").style.opacity = 1;
+      }
+    });
 
-
-
-
-
-
-//nav new area
-
-
-
-
-
-
-
-
-
-
-    //cart visibiliy
+    // cart visibility
     function cart_pop(foodname, img, price) {
       currentPrice = price;
       document.getElementById("popup").style.opacity = 1;
       document.getElementById("popup").style.pointerEvents = "all";
-      //scroll up
+      // scroll up
       document.getElementById("popup").style.transform = "translateY(0)";
-      // reset 
-      qty = 0; 
+      // reset
+      qty = 0;
       document.getElementById("qtyNum").innerText = 0;
       document.getElementById("price").innerText = "₹0";
-      //scroll down
+      // scroll down
       document.getElementById("back_button").onclick = function () {
-      document.getElementById("popup").style.opacity = 0;
-      document.getElementById("popup").style.pointerEvents = "none";
-      document.getElementById("popup").style.transform = "translateY(100%)";
-
+        document.getElementById("popup").style.opacity = 0;
+        document.getElementById("popup").style.pointerEvents = "none";
+        document.getElementById("popup").style.transform = "translateY(100%)";
       }
-      //images
+      // images
       document.getElementById("popimg").src = img;
-      //foodname
+      // foodname
       document.getElementById("sec1").innerText = foodname;
-
     }
-    //Quantity
+
+    // Quantity
     let qty = 0;
     let currentPrice = 0;
 
@@ -739,63 +706,53 @@ function switchTab(event, tabName) {
       qty = Math.max(0, qty + val);
       document.getElementById("qtyNum").innerText = qty;
       document.getElementById("price").innerText = "₹" + (qty * currentPrice);
-
     }
-    //cart count increment
-      document.getElementById("Conform_button").onclick = function () {
+
+    // cart count increment
+    document.getElementById("Conform_button").onclick = function () {
       document.getElementById("popup").style.opacity = 0;
       document.getElementById("popup").style.pointerEvents = "none";
       document.getElementById("popup").style.transform = "translateY(100%)";
       document.getElementById("cartCount").style.opacity = 1;
-      
-    
 
-      //local storage (cart.html)
-    
-      
-      if(qty === 0)return;
-     let cart = JSON.parse(localStorage.getItem("cart")) || [];
-     const foodname=document.getElementById("sec1").innerText;
-     const imgSrc = document.getElementById("popimg").src;
-     const Item_present = cart.find(item => item.name === foodname);
-     if(Item_present){
-        Item_present.qty+=qty;
+      if (qty === 0) return;
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const foodname = document.getElementById("sec1").innerText;
+      const imgSrc = document.getElementById("popimg").src;
+      const Item_present = cart.find(item => item.name === foodname);
+      if (Item_present) {
+        Item_present.qty += qty;
         Item_present.total = Item_present.qty * Item_present.price;
-     }else{
+      } else {
         cart.push({
-            name:foodname,
-            img:imgSrc,
-            price:currentPrice,
-            qty: qty,
-            total: qty * currentPrice
+          name: foodname,
+          img: imgSrc,
+          price: currentPrice,
+          qty: qty,
+          total: qty * currentPrice
         });
-     }
-localStorage.setItem("cart",JSON.stringify(cart));
-// cart count reset solution
-let totalQty = cart.reduce((sum, i) => sum + i.qty, 0);
-document.getElementById("cartCount").innerText = totalQty;
-document.getElementById("cartCount").style.opacity = 1;
+      }
+      localStorage.setItem("cart", JSON.stringify(cart));
+      // cart count reset solution
+      let totalQty = cart.reduce((sum, i) => sum + i.qty, 0);
+      document.getElementById("cartCount").innerText = totalQty;
+      document.getElementById("cartCount").style.opacity = 1;
     }
-   
 
-
-
-
-    //cart next page
+    // cart next page
     function cart_pop2() {
-
-      //delay 
+      // delay
       document.querySelector(".cart").classList.add("delay");
       setTimeout(() => { window.location.href = "cart.html" }, 550);
     }
-    //drinks
-    function Drinks(){
-      //delay 
+
+    // drinks
+    function Drinks() {
+      // delay
       document.querySelector(".drinks").classList.add("delay");
-      setTimeout(() => { window.location.href = "drinks.html" },550 )
+      setTimeout(() => { window.location.href = "drinks.html" }, 550);
     }
-    
-</script>
+  </script>
 </body>
 
 </html>

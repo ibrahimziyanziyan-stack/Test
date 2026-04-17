@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+            background: #081c15;
+      min-height: 100vh;
+      font-family: 'Outfit', sans-serif;
+      overflow-x: hidden;
+      overflow-y: auto;
+        }body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 20%, #1b4332 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 80%, #081c15 0%, transparent 55%),
+        radial-gradient(ellipse at 60% 10%, #2d6a4f44 0%, transparent 45%);
+      z-index: 0;
+    }
+
+        table{
+            position: absolute;
+            border-collapse: collapse;
+            border-radius: 12px;
+            overflow: hidden; 
+            z-index: 1;
+            background-color: #9aa194;
+            top: 120px;
+           
+          
+        }
+
+        th, td{
+            padding: 15px 25px;
+            text-align: center;
+        }
+
+        th{
+            background-color: #95d45a;
+            color: black;
+        }
+
+       
+        tr:hover{
+            background-color: #ddd;
+        }
+        .head{
+            height: 50px;
+            width: 100%;
+            text-align: center;
+            z-index: 2;
+        }
+        span{color: #95d45a;font-weight: 700;font-size: 20px;}
+        p{color: #ddd;font-weight: 700;font-size: 20px;}
+    </style>
+</head>
+<body>
+<header class="head">
+    <p><span>Admin</span> Dashboard</p>
+</header>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Table No.</th>
+            <th>Category</th>
+            <th>Item Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Status</th>
+        </tr>
+
+        <tr>
+            <td>1</td>
+            <td>5</td>
+            <td>Veg</td>
+            <td>Paneer Butter Masala</td>
+            <td>2</td>
+            <td>₹250</td>
+            <td>Pending</td>
+        </tr>
+    </table>
+
+</body>
+</html>
